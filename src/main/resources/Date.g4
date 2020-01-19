@@ -5,14 +5,10 @@ jdate: pname  indate? format? ;
 pname: 'date' ;
 
 
-indate : '-d'  operator  opdate?  operator ;
+indate : '-d'  DELIMITER specdate? opdate?  DELIMITER ;
 
-// 操作符，日期中需要存在单引号或者双引号
-operator : '\'' | '"' ;
-
-opdate : 'yyyy-MM-dd'
-       | (NUMBER  cycle  AGO?)
-       ;
+specdate : NUMBER NUMBER NUMBER ;
+opdate : (NUMBER  cycle  AGO?);
 
 // 输入周期
 cycle : DAY
@@ -48,6 +44,7 @@ YEAR : 'year' | 'YEAR' ;
 
 AGO : 'ago' | 'AGO' ;
 
+DELIMITER : '\'' | '"' ;
 FORMATOPER : '%' ;
 ADDOPER : '+' ;
 SUBOPER : '-' ;
