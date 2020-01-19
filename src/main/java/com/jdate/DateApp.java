@@ -18,7 +18,7 @@ public class DateApp {
 
     public static void main(String[] args) {
 
-        String sentence = "date -d '10 day ago' +%Y-%m-%d";
+        String sentence = "date -d '1 year ago' +%Y-%m-%d";
 
         DateLexer dateLexer = new DateLexer(CharStreams.fromString(sentence));
 

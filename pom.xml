@@ -9,8 +9,10 @@
     <version>1.0</version>
 
     <properties>
-        <antlr.version>4.7</antlr.version>
         <encoding>UTF-8</encoding>
+        <antlr.version>4.7</antlr.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
+        <joda.version>2.10.5</joda.version>
     </properties>
 
     <dependencies>
@@ -18,6 +20,16 @@
             <groupId>org.antlr</groupId>
             <artifactId>antlr4-runtime</artifactId>
             <version>${antlr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda.version}</version>
         </dependency>
     </dependencies>
 

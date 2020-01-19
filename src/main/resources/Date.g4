@@ -1,17 +1,21 @@
 grammar Date ;
 
-jdate: pname  indate? format? ;
+jdate: pname indate? format? ;
 
 pname: 'date' ;
 
 
-indate : '-d'  DELIMITER specdate? opdate?  DELIMITER ;
+indate : '-d' DELIMITER specdate? opdate?  DELIMITER ;
 
 specdate : NUMBER NUMBER NUMBER ;
 opdate : (NUMBER  cycle  AGO?);
 
 // 输入周期
-cycle : DAY
+cycle : MILLIS
+      | SECOND
+      | MINUTE
+      | HOUR
+      | DAY
       | WEEK
       | MONTH
       | YEAR
@@ -24,20 +28,34 @@ spector : '-'
         | '/'
         | '_'
         | '%'
+        | ':'
+        | '#'
+        | '^'
+        | '$'
+        | '~'
+        | '*'
         | CHINAES
         | ENGLISH
         | UNICODE
         ;
 
-formatval : FORMATOPER (yearformat | monthformat | dayformat) ;
-yearformat : 'Y' | 'y' ;
-monthformat : 'M' | 'm' ;
-dayformat : 'd' | 'D' ;
+formatval : (FORMATOPER formatinfo)+ ;
+formatinfo : 'Y'
+           | 'm'
+           | 'd'
+           | 'H'
+           | 'M'
+           | 'S'
+           ;
 
 
 
 NUMBER : '-'? [0-9]+ ;
-DAY : 'day' | 'DAY';
+MILLIS : 'millis' | 'MILLIS' ;
+SECOND : 'second' | 'SECOND' ;
+MINUTE : 'minute' | 'MINUTE' ;
+HOUR : 'hour' | 'HOUR' ;
+DAY : 'day' | 'DAY' ;
 WEEK : 'week' | 'WEEK' ;
 MONTH : 'month' | 'MONTH' ;
 YEAR : 'year' | 'YEAR' ;
